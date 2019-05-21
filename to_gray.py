@@ -1,7 +1,7 @@
 import cv2
 import sys
 
-# sys.argv[1] - image name which you convert to gray version
+# sys.argv[1] - image name which you converts to grayscaled version
 image = cv2.imread(sys.argv[1])
 
 img_name = f'{sys.argv[1][2:].split(".")[0]}_gray.jpg'
