@@ -8,8 +8,8 @@ Used packages: <br>
 - <a href="https://pypi.org/project/opencv-python/" target="_blank">Open CV</a> <br>
 - <a href="https://pypi.org/project/pytesseract/" target="_blank">Tesseract</a> <br>
 
-To use these image preprocess, first you should set environment and call:<br>
-<b>pip install </b><br>
+To use these image preprocess, first you should set environment and install required packages:<br>
+- <b>pip install </b><br>
 Also you need to install <a href="https://www.bl.uk/britishlibrary/~/media/bl/global/early%20indian%20printed%20books/training%20resources/installing%20and%20using%20tesseract%20ocr.pdf" target="_blank">Tesseract</a> on your machine
 
 How to use scripts: <br>
