@@ -1,8 +1,8 @@
 # images-preprocessing
 Image preprocessing with adaptive filters
 
-For better understanding adaptive treshhold read this article:
-https://docs.opencv.org/3.4.0/d7/d4d/tutorial_py_thresholding.html?fbclid=IwAR1u-zeXf_bWLRhCOsHnLDRBzEEsNoT9B0f5Ibmy5zXeQxSn8z5eclkfW-0
+For better understanding adaptive treshhold read <a href="https://docs.opencv.org/3.4.0/d7/d4d/tutorial_py_thresholding.html?fbclid=IwAR1u-zeXf_bWLRhCOsHnLDRBzEEsNoT9B0f5Ibmy5zXeQxSn8z5eclkfW-0
+" target="_blank">this article</a>
 
 Used packages: <br>
 -<a href="https://pypi.org/project/opencv-python/" target="_blank">Open CV</a> <br>
