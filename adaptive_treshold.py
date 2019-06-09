@@ -1,29 +1,30 @@
+import sys
 import cv2 as cv
 from matplotlib import pyplot as plt
-import sys
 
-img = cv.imread(sys.argv[1], 0)
-img_name = f'{sys.argv[1][2:].split(".")[0]}_adaptive.jpg'
+IMG = cv.imread(sys.argv[1], 0)
+IMG_NAME = f'{sys.argv[1][2:].split(".")[0]}_adaptive.jpg'
 
 # Image tresholding(preprocessing with adaptive filter)
 
-img = cv.medianBlur(img,5)
-ret, th1 = cv.threshold(img, 127, 255, cv.THRESH_BINARY)
-th2 = cv.adaptiveThreshold(img, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 11, 2)
-th3 = cv.adaptiveThreshold(img, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11 , 2)
+IMG = cv.medianBlur(IMG, 5)
+ret, TH1 = cv.threshold(IMG, 127, 255, cv.THRESH_BINARY)
+TH2 = cv.adaptiveThreshold(IMG, 255, cv.ADAPTIVE_THRESH_MEAN_C, cv.THRESH_BINARY, 11, 2)
+TH3 = cv.adaptiveThreshold(IMG, 255, cv.ADAPTIVE_THRESH_GAUSSIAN_C, cv.THRESH_BINARY, 11 , 2)
 
-titles = ['Original Image', 'Global Thresholding (v = 127)',
+TITLES = ['Original Image', 'Global Thresholding (v = 127)', 
             'Adaptive Mean Thresholding', 'Adaptive Gaussian Thresholding']
 
-images = [img, th1, th2, th3]
+IMAGES = [IMG, TH1, TH2, TH3]
 
 # Show results
 for i in range(4):
     plt.subplot(2, 2, i+1)
-    plt.imshow(images[i], 'gray')
-    plt.title(titles[i])
-    plt.xticks([]),plt.yticks([])
+    plt.imshow(IMAGES[i], 'gray')
+    plt.title(TITLES[i])
+    plt.xticks([]), plt.yticks([])
 
 # plt.show()
-
-cv.imwrite(img_name, th1)
+IMG_LOCATION = IMG_NAME.split("\\")
+OUTPUT_LOCATION = IMG_LOCATION[0] + "\adaptive\\" + IMG_LOCATION[1]
+cv.imwrite(OUTPUT_LOCATION, TH1)

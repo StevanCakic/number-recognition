@@ -1,9 +1,9 @@
-import cv2
 import sys
+import cv2
 
 # sys.argv[1] - image name which you converts to grayscaled version
-image = cv2.imread(sys.argv[1])
-
-img_name = f'{sys.argv[1][2:].split(".")[0]}_gray.jpg'
-gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-cv2.imwrite(img_name, gray)
+IMAGE = cv2.imread(sys.argv[1])
+GRAY = cv2.cvtColor(IMAGE, cv2.COLOR_BGR2GRAY)
+IMG_LOCATION = f'{sys.argv[1][2:].split(".")[0]}_gray.jpg'.split("\\")
+OUTPUT_LOCATION = IMG_LOCATION[0] + "\gray\\" + IMG_LOCATION[1]
+cv2.imwrite(OUTPUT_LOCATION, GRAY)
