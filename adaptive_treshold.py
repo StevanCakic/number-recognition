@@ -24,6 +24,6 @@ for i in range(4):
     plt.title(titles[i])
     plt.xticks([]),plt.yticks([])
 
-plt.show()
+# plt.show()
 
-cv.imwrite(img_name, th3)
+cv.imwrite(img_name, th1)

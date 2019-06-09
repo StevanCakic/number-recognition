@@ -1,5 +1,4 @@
 from PIL import Image
-import cv2
 import pytesseract
 import sys
 
@@ -10,4 +9,7 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 # https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc
 # Simple image to string
 
-print(pytesseract.image_to_string(Image.open(sys.argv[1])))
+str_serial_number = pytesseract.image_to_string(Image.open(sys.argv[1]), config='--psm 6')
+digits = list(filter(str.isdigit, str_serial_number))
+result = int("".join(digits))
+print(result)
