@@ -13,17 +13,23 @@ pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tessera
 # setovati folder gdje se nalaze slike za recognize
 IMAGES_FOLDER = sys.argv[1]
 # proci kroz folder sa slikama i uporediti da li se broj slaze sa nazivom slike do _
-
+text = ""
 for filename in os.listdir(IMAGES_FOLDER):
     index_of_ = filename.find('_')
     index_of_dot = filename.find(".")
     new_filename = ""
+    version = 1
     if index_of_ > -1:
         new_filename = filename[0:index_of_]
+        version = filename[index_of_ + 1: index_of_dot]
     else:
         new_filename = filename[0:index_of_dot]
     image_path = f'{IMAGES_FOLDER}\{filename}'
+    print("Processing: " + image_path)
     SERIAL_NUMBER = pytesseract.image_to_string(Image.open(image_path), config='--psm 13')
     DIGITS = list(filter(lambda str: str.isdigit(), SERIAL_NUMBER))
     RESULT = "".join(DIGITS)
-    print(new_filename, RESULT)
+    text += "Version:" + str(version) + ";Original:" + new_filename + ";Recognized:" + RESULT + "\n"
+
+with open("output_tesseract.txt", "w", encoding="utf-8") as f:
+    f.write(text)
