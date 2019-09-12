@@ -3,9 +3,9 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 import os
 
-IMAGES_FOLDER = sys.argv[1] # images folder 
+IMAGES_FOLDER = sys.argv[1] # images read folder 
 CONVERSION_METHOD = sys.argv[2] #th1, th2, th3
-ROOT_FOLDER = ".\images"
+ROOT_FOLDER = ".\images" # write folder
 
 for filename in os.listdir(IMAGES_FOLDER):
     # Image tresholding(preprocessing with adaptive filter)

@@ -2,3 +2,5 @@
 /env
 /.vscode
 /dipol-env
+output_tesseract*
+test_scripts
