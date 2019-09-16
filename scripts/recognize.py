@@ -27,7 +27,7 @@ for filename in os.listdir(IMAGES_FOLDER):
     else:
         new_filename = filename[0:index_of_dot]
     image_path = f'{IMAGES_FOLDER}\{filename}'
-    print("Processing: " + image_path)
+    # print("Processing: " + image_path)
     SERIAL_NUMBER = pytesseract.image_to_string(Image.open(image_path), lang='eng',
         config='--psm 10 --oem 1 -c tessedit_char_whitelist=0123456789')
     DIGITS = list(filter(lambda str: str.isdigit(), SERIAL_NUMBER))
