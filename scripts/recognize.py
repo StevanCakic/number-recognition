@@ -27,13 +27,14 @@ def main(images):
     # We check if file name is the same as number which is recognized
     text = ""
     valid = 0
-    num_of_images = len(os.listdir(images))
+    num_of_images = len(os.listdir(images)) - 1
 
     # Loop over all images
     for filename in os.listdir(images):
         new_filename, version = get_number_from_image_name(filename)
         image_path = f'{images}\\{filename}'
-        
+        if ".png" not in image_path:
+            continue
         # Tesseract configuration, main part to set 
         serial_number = pytesseract.image_to_string(Image.open(image_path), lang='eng',
             config='--psm 10 --oem 1 -c tessedit_char_whitelist=0123456789')
