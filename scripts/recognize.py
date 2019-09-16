@@ -55,7 +55,7 @@ def main(images):
     text += "Perc:" +  str((valid * 100) / num_of_images)
 
     # Store results to txt file
-    with open("output_tesseract.txt", "w", encoding="utf-8") as file:
+    with open("results.txt", "w", encoding="utf-8") as file:
         file.write(text)
 
 if __name__ == "__main__":

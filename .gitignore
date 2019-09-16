@@ -3,4 +3,4 @@
 /dipol-env
 output_tesseract*
 test_scripts
-/images/preprocessed
+/images/preprocessed/*
