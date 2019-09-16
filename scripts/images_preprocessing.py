@@ -35,13 +35,13 @@ def image_resize(image, width=None, height=None, inter=cv2.INTER_AREA):
 
 
 def main(images):
-    ROOT_FOLDER = ".\images" # root for write folder
+    root_folder = ".\\images" # root for write folder
     for filename in os.listdir(images):
 
-        OUTPUT_LOCATION = ROOT_FOLDER + "\\horizontals_removed\\" + filename
+        output_location = root_folder + "\\preprocessed\\" + filename
 
         # read image
-        img = cv2.imread(f'{images}\{filename}')
+        img = cv2.imread(f'{images}\\{filename}')
         # cv.imshow("Original image", img)
 
         # resized image
@@ -88,7 +88,7 @@ def main(images):
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-        cv2.imwrite(OUTPUT_LOCATION, result_image)
+        cv2.imwrite(output_location, result_image)
 
 if __name__ == "__main__":
     IMAGES_FOLDER = sys.argv[1] # images read folder
