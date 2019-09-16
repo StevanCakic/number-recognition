@@ -1,6 +1,6 @@
 /env
 /.vscode
 /dipol-env
-output_tesseract*
+results*
 test_scripts
 /images/preprocessed/*.png
