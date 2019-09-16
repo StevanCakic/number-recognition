@@ -14,14 +14,9 @@ Also you need to install <a href="https://www.bl.uk/britishlibrary/~/media/bl/gl
 
 How to use scripts: <br>
 
-- <b>adaptive_treshold.py</b> -> Script convert image to a black/white drawing (adaptive treshold) which is used to later for recongize script to easier recognize text from the image<br>
-<b>python adaptive_treshhold.py <img_name></b> <br>
-eg. python adaptive_treshold.py image.jpg -> output will be black/white drawing in same folder named image_adaptive.jpg<br>
+- <b>images_preprocessing.py</b> -> Script preprocess image for recognizing script<br>
+<b>python .\scripts\images_preprocessing.py .\images\serial_numbers</b> <br>
 
-- <b>recognize.py </b> -> Script gets text from the image and print that text in a terminal <br>
+- <b>recognize.py </b> -> Script gets text from the image and store results.txt file <br>
 You can call this script simply by calling this command in terminal: <br>
-<b>python recognize.py <img_name></b> <br>
-eg. python recognize.py preprocessed.jpg -> output will recognized text from the image<br>
-  
-
-
+<b>python .\scripts\recognize.py .\images\preprocessed </b> <br>
