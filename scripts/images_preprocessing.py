@@ -52,38 +52,33 @@ def main(images):
         img_gray = cv2.cvtColor(resized_img, cv2.COLOR_BGR2GRAY)
         # cv2.imshow("Gray image", img_gray)
 
-        # Invert each bit
-        img_gray_inverted = cv2.bitwise_not(img_gray)
-        # cv2.imshow("Gray image, each bit converted", img_gray_inverted)
-
         # Get resized image dimensions
-        rows, _ = img_gray_inverted.shape
+        rows, _ = img_gray.shape
 
         # Get horizontal size (for creating kernel to remove horizontal lines)
         horizontalsize = int(rows / 35)
 
-        # Creating kernel for erode (because each bit inverted, erode == delite)
+        # Creating kernel for dilate
         # MOTPH_ELLIPSE works best
         kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, horizontalsize))
 
-        # Create eroded image
+        # Create dilate image
         # Docs: https://docs.opencv.org/3.4/db/df6/tutorial_erosion_dilatation.html
-        eroded_image = cv2.erode(img_gray_inverted, kernel)
-        # cv2.imshow("erode", horizontal)
+        dilated_image = cv2.dilate(img_gray, kernel)
+        # cv2.imshow("Dilate", dilated_image)
         
         # Blured by Gaussian blur
-        blured_image = cv2.GaussianBlur(eroded_image, (3, 5), 0)
-        # cv2.imshow("Blured by Gaussian blur", blur)
+        blured_image = cv2.GaussianBlur(dilated_image, (3, 5), 0)
+        # cv2.imshow("Blured by Gaussian blur", blured_image)
 
         # Otsu thresholding
         _, th_otsu_image = cv2.threshold(blured_image, 0, 255, cv2.THRESH_OTSU)
+        # cv2.imshow("Otsu", th_otsu_image)
         
-        # Dilate image, to get bolder numbers
-        dilated_image = cv2.dilate(th_otsu_image, kernel)
+        # Erode image, to get bolder numbers
+        result_image = cv2.erode(th_otsu_image, kernel)
 
-        result_image = cv2.bitwise_not(dilated_image)
-
-        # cv2.imshow("erode", res)
+        # cv2.imshow("Result", result_image)
 
         cv2.waitKey(0)
         cv2.destroyAllWindows()
