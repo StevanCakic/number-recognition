@@ -37,7 +37,7 @@ def main(images):
             continue
         # Tesseract configuration, main part to set 
         serial_number = pytesseract.image_to_string(Image.open(image_path), lang='eng',
-            config='--psm 10 --oem 1 -c tessedit_char_whitelist=0123456789')
+            config='--psm 13 tessedit_char_whitelist=0123456789')
         
         # Chech if char is digit, maybe this is redudant because of whitelisting
         digits = list(filter(lambda str: str.isdigit(), serial_number))
